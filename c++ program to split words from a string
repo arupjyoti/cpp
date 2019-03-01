@@ -1,0 +1,26 @@
+/* Created by Arup Jyoti Dutta
+*/
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+  
+    string str,token;
+    cin>>str;
+    
+    size_t prev=0,found = str.find("-");
+
+    while(found != string::npos)
+    {
+       token = str.substr(prev,found-prev);
+       
+       cout<<token<<"\n";
+
+       found = str.find("-",prev=found+1);
+
+    }
+    cout<<str.substr(prev);
+}
