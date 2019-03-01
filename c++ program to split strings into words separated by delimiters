@@ -9,7 +9,7 @@ using namespace std;
 int main()
 {
   
-    string str,token;
+    string str;
     cin>>str;
     cin>>delim;
     size_t prev=0;
@@ -20,13 +20,11 @@ int main()
     // search delimiters until the end of the string
     while(found != string::npos)
     {
-    // the substring between two delimiters 
-       token = str.substr(prev,found-prev);
-       
-       cout<<token<<"\n";
-        
+    // the substring between two delimiters gets printed out
+       cout<<str.substr(prev,found-prev)<<"\n";
+    
+    // the search for delimiter continues... 
        found = str.find(delim,prev=found+1);
-
     }
     //prints the rest of the string after the last delimiter is encountered
     cout<<str.substr(prev);
