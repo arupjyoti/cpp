@@ -1,0 +1,33 @@
+/* Created by Arup Jyoti Dutta
+    Date created : 02-Mar-19
+*/
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+  
+    string str,token;
+    cin>>str;
+    cin>>delim;
+    size_t prev=0;
+    
+    //returns the position of first delimiter
+    size_t found = str.find(delim);
+
+    // search delimiters until the end of the string
+    while(found != string::npos)
+    {
+    // the substring between two delimiters 
+       token = str.substr(prev,found-prev);
+       
+       cout<<token<<"\n";
+        
+       found = str.find(delim,prev=found+1);
+
+    }
+    //prints the rest of the string after the last delimiter is encountered
+    cout<<str.substr(prev);
+}
