@@ -3,17 +3,36 @@
 */
 
 
-
 #include<bits/stdc++.h>
 using namespace std;
+
+const std::string WHITESPACE = " \n\r\t\f\v";
+
+std::string ltrim(const std::string& s)
+{
+	size_t start = s.find_first_not_of(WHITESPACE);
+	return (start == std::string::npos) ? "" : s.substr(start);
+}
+
+std::string rtrim(const std::string& s)
+{
+	size_t end = s.find_last_not_of(WHITESPACE);
+	return (end == std::string::npos) ? "" : s.substr(0, end + 1);
+}
+
+std::string trim(const std::string& s)
+{
+	return rtrim(ltrim(s));
+}
+
 int main()
 {
-  
-    string str;
-    cin>>str;
-    cin>>delim;
+
+    string str,delim;
+    getline(cin,str);
+    getline(cin,delim);
     size_t prev=0;
-    
+
     //returns the position of first delimiter
     size_t found = str.find(delim);
 
@@ -21,11 +40,11 @@ int main()
     while(found != string::npos)
     {
     // the substring between two delimiters gets printed out
-       cout<<str.substr(prev,found-prev)<<"\n";
-    
-    // the search for delimiter continues... 
+       cout<<trim(str.substr(prev,found-prev))<<"\n";
+
+    // the search for delimiter continues...
        found = str.find(delim,prev=found+1);
     }
     //prints the rest of the string after the last delimiter is encountered
-    cout<<str.substr(prev);
+    cout<<trim(str.substr(prev));
 }
