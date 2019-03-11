@@ -4,23 +4,26 @@
 
 
 #include<bits/stdc++.h>
-using namespace std;
 
-const std::string WHITESPACE = " \n\r\t\f\v";
+#define string_c std::string
+#define cout_c std::cout
+#define cin_c std::cin
 
-std::string ltrim(const std::string& s)
+const string_c WHITESPACE = " \n\r\t\f\v";
+
+string_c ltrim(const string_c& s)
 {
 	size_t start = s.find_first_not_of(WHITESPACE);
-	return (start == std::string::npos) ? "" : s.substr(start);
+	return (start == string_c::npos) ? "" : s.substr(start);
 }
 
-std::string rtrim(const std::string& s)
+string_c rtrim(const string_c& s)
 {
 	size_t end = s.find_last_not_of(WHITESPACE);
-	return (end == std::string::npos) ? "" : s.substr(0, end + 1);
+	return (end == string_c::npos) ? "" : s.substr(0, end + 1);
 }
 
-std::string trim(const std::string& s)
+string_c trim(const string_c& s)
 {
 	return rtrim(ltrim(s));
 }
@@ -28,23 +31,23 @@ std::string trim(const std::string& s)
 int main()
 {
 
-    string str,delim;
-    getline(cin,str);
-    getline(cin,delim);
+    string_c str,delim;
+    getline(cin_c,str);
+    getline(cin_c,delim);
     size_t prev=0;
 
     //returns the position of first delimiter
     size_t found = str.find(delim);
 
     // search delimiters until the end of the string
-    while(found != string::npos)
+    while(found != string_c::npos)
     {
     // the substring between two delimiters gets printed out
-       cout<<trim(str.substr(prev,found-prev))<<"\n";
+      cout_c<<trim(str.substr(prev,found-prev))<<"\n";
 
     // the search for delimiter continues...
        found = str.find(delim,prev=found+1);
     }
     //prints the rest of the string after the last delimiter is encountered
-    cout<<trim(str.substr(prev));
+    cout_c<<trim(str.substr(prev));
 }
