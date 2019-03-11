@@ -42,7 +42,7 @@ void split_s(string_c str,string_c delim)
     // search delimiters until the end of the string
     while(found != string_c::npos)
     {
-    // the substring between two delimiters gets printed out
+    // the substring gets printed out
       cout_c<<trim(str.substr(prev,found-prev))<<"\n";
 
     // the search for delimiter continues...
