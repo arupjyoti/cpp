@@ -11,29 +11,29 @@
 
 const string_c WHITESPACE = " \n\r\t\f\v";
 
+// Trim the left part of the string i.e omitting any of the WHITESPACE characters on the left part of the string
 string_c ltrim(const string_c& s)
 {
 	size_t start = s.find_first_not_of(WHITESPACE);
 	return (start == string_c::npos) ? "" : s.substr(start);
 }
-
+// Trim the right part of the string i.e omitting any of the WHITESPACE characters on the right part of the string
 string_c rtrim(const string_c& s)
 {
 	size_t end = s.find_last_not_of(WHITESPACE);
 	return (end == string_c::npos) ? "" : s.substr(0, end + 1);
 }
 
+//Trim both the ends of the string
 string_c trim(const string_c& s)
 {
 	return rtrim(ltrim(s));
 }
 
-int main()
+// function to split the strings 
+void split_s(string_c str,string_c delim)
 {
 
-    string_c str,delim;
-    getline(cin_c,str);
-    getline(cin_c,delim);
     size_t prev=0;
 
     //returns the position of first delimiter
@@ -50,4 +50,20 @@ int main()
     }
     //prints the rest of the string after the last delimiter is encountered
     cout_c<<trim(str.substr(prev));
+}
+
+int main()
+{
+
+    string_c str,delim;
+    
+    // Get the string
+    getline(cin_c,str);
+    
+    // Get the delimiter
+    getline(cin_c,delim);
+
+    // calling function 
+    split_s(str,delim);
+
 }
